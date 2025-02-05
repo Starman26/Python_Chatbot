@@ -1,35 +1,38 @@
-# Chatbot con TensorFlow y LSTM
+# Chatbot with TensorFlow and LSTM
 
-Este proyecto implementa un chatbot utilizando una arquitectura basada en LSTM con TensorFlow. El sistema procesa datos de intenciones definidas en un archivo JSON, los preprocesa, entrena un modelo y luego interactúa con el usuario en tiempo real.
+This project implements a chatbot using an LSTM-based architecture with TensorFlow. The system processes intent data defined in a JSON file, preprocesses it, trains a model, and then interacts with the user in real-time.
 
-## Estructura del Proyecto
+## Project Structure
 
-El proyecto está organizado en módulos para facilitar su mantenimiento y escalabilidad:
+The project is organized into modules to facilitate maintenance and scalability:
 
 - **Dataset/**  
-  Contiene los datos y la lógica para cargarlos.  
-  - `intents.json`: Archivo con las intenciones, patrones y respuestas.
-  - `data_loader.py`: Módulo para cargar y transformar los datos en un DataFrame y un diccionario de respuestas.
+  Contains the data and the logic for loading it.  
+  - `intents.json`: File with intents, patterns, and responses.
+  - `data_loader.py`: Module for loading and transforming data into a DataFrame and a response dictionary.
 
 - **Setup/**  
-  Contiene los scripts de preprocesamiento.  
-  - `preprocessing.py`: Funciones para limpiar el texto, tokenizar, aplicar padding y codificar las etiquetas.
+  Contains preprocessing scripts.  
+  - `preprocessing.py`: Functions for text cleaning, tokenization, padding application, and label encoding.
 
 - **Modeling/**  
-  Contiene la definición, compilación, entrenamiento y evaluación del modelo.  
-  - `model.py`: Funciones para construir, entrenar y graficar el rendimiento del modelo.
+  Contains model definition, compilation, training, and evaluation.  
+  - `model.py`: Functions to build, train, and visualize the model's performance.
 
 - **pipeline.py**  
-  Archivo principal que integra todas las etapas: carga de datos, preprocesamiento, entrenamiento y puesta en marcha del chatbot interactivo.
+  Main script that integrates all stages: data loading, preprocessing, training, and deploying the interactive chatbot.
 
-## Instalación
+## Installation
 
-1. **Clona el repositorio**
-
+1. **Clone the repository**
    ```bash
-   git clone https://github.com/tu_usuario/tu_repositorio.git
-   cd tu_repositorio
+   git clone https://github.com/your_username/your_repository.git
+   cd your_repository
 
-2. **Inicia el chatbot**
-    ```bash
-   python pipeline.py
+2. **Start the training Pipeline**
+   ```bash
+    python pipeline.py
+   
+3. **After training the model, you can initialize the chatbot directly with the following command:**
+   ```bash
+    python inference.py
