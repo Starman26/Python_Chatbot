@@ -30,6 +30,6 @@ El proyecto está organizado en módulos para facilitar su mantenimiento y escal
    git clone https://github.com/tu_usuario/tu_repositorio.git
    cd tu_repositorio
 
-2. ** Inicia el codigo **
+2. **Inicia el chatbot**
     ```bash
    python pipeline.py
