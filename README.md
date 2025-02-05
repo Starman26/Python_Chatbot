@@ -29,3 +29,7 @@ El proyecto está organizado en módulos para facilitar su mantenimiento y escal
    ```bash
    git clone https://github.com/tu_usuario/tu_repositorio.git
    cd tu_repositorio
+
+2. ** Inicia el codigo **
+    ```bash
+   python pipeline.py
