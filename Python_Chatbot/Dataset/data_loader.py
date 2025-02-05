@@ -3,12 +3,12 @@ import pandas as pd
 
 def load_intents_data(json_path):
     """
-    Carga el archivo JSON con las intenciones y retorna:
-      - Un DataFrame con las columnas 'patterns' y 'tags'.
-      - Un diccionario 'responses' donde cada llave es un tag y su valor es la lista de respuestas.
+    Load the JSON file with the intentions and returns:
+      - A DataFrame with the columns 'patterns' and 'tags'.
+      - A 'responses' dictionary where each key is a tag and its value is the list of answers.
       
     Args:
-        json_path (str): Ruta al archivo JSON de intenciones.
+        json_path (str): Path to the JSON file of intentions.
     
     Returns:
         tuple: (df, responses)

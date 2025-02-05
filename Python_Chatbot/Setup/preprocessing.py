@@ -5,26 +5,27 @@ from sklearn.preprocessing import LabelEncoder
 
 def clean_text(text):
     """
-    Convierte el texto a minúsculas y elimina signos de puntuación.
+    Converts text to lowercase and removes punctuation marks.
     
     Args:
-        text (str): Texto a limpiar.
+        text (str): Text to be cleaned.
     
     Returns:
-        str: Texto limpio.
+        str: Text is clear.
     """
     return ''.join([char.lower() for char in text if char not in string.punctuation])
 
 def preprocess_data(df, num_words=2000):
     """
-    Preprocesa el DataFrame: limpia el texto, tokeniza, aplica padding y codifica las etiquetas.
+    Preprocess the DataFrame: cleans text, tokenizes, applies padding and encodes labels.
     
     Args:
-        df (pd.DataFrame): DataFrame con las columnas 'patterns' y 'tags'.
-        num_words (int): Número máximo de palabras a considerar en la tokenización.
+        df (pd.DataFrame): DataFrame with the 'patterns' and 'tags' columns.
+        num_words (int): Maximum number of words to be considered in tokenization.
     
     Returns:
         tuple: (x_train, y_train, tokenizer, label_encoder, input_shape, vocabulary, output_length)
+        
     """
     # Limpieza de texto
     df['patterns'] = df['patterns'].apply(clean_text)

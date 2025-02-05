@@ -1,20 +1,22 @@
 from tensorflow.keras.layers import Input, Embedding, LSTM, Dense, Flatten
 from tensorflow.keras.models import Model
 import matplotlib.pyplot as plt
+import pickle
 
 def build_model(input_shape, vocabulary, output_length, embedding_dim=10, lstm_units=10):
     """
-    Construye y compila el modelo.
+    Builds and compiles the model.
     
     Args:
-        input_shape (int): Longitud de las secuencias de entrada.
-        vocabulary (int): Número de palabras únicas en el vocabulario.
-        output_length (int): Número de etiquetas/clases.
-        embedding_dim (int): Dimensión del embedding.
-        lstm_units (int): Número de unidades en la capa LSTM.
+        input_shape (int): Length of the input sequences.
+        vocabulary (int): Number of unique words in the vocabulary.
+        output_length (int): Number of tags/classes.
+        embedding_dim (int): Dimension of the embedding.
+        lstm_units (int): Number of units in the LSTM layer.
     
     Returns:
-        model: Modelo compilado.
+        model: Compiled model.
+
     """
     i = Input(shape=(input_shape,))
     x = Embedding(vocabulary + 1, embedding_dim)(i)
@@ -28,25 +30,51 @@ def build_model(input_shape, vocabulary, output_length, embedding_dim=10, lstm_u
 
 def train_model(model, x_train, y_train, epochs=200):
     """
-    Entrena el modelo.
+    Train the model.
     
     Args:
-        model: Modelo compilado.
-        x_train: Datos de entrada.
-        y_train: Etiquetas.
-        epochs (int): Número de épocas de entrenamiento.
+        model: Compiled model.
+        x_train: Input data.
+        y_train: Tags.
+        epochs (int): Number of training times.
     
     Returns:
-        history: Historial de entrenamiento.
+        history: Training history.
+
     """
     history = model.fit(x_train, y_train, epochs=epochs)
     return history
 
 def plot_history(history):
     """
-    Grafica la precisión y la pérdida durante el entrenamiento.
+    Plot accuracy and loss during training.
+
     """
-    plt.plot(history.history['accuracy'], label='Precisión de entrenamiento')
-    plt.plot(history.history['loss'], label='Pérdida de entrenamiento')
+    plt.plot(history.history['accuracy'], label='Precision of training')
+    plt.plot(history.history['loss'], label='Training Loss')
     plt.legend()
     plt.show()
+
+def save_tokenizer(tokenizer, filepath):
+    """
+   Save the tokenizer in a file.
+    
+    Args:
+        tokenizer: The Keras tokenizer object.
+        file path (str): Path where the file will be saved.
+
+    """
+    with open(filepath, 'wb') as f:
+        pickle.dump(tokenizer, f, protocol=pickle.HIGHEST_PROTOCOL)
+
+def save_label_encoder(label_encoder, filepath):
+    """
+    Save the tag encoder in a pickle file.
+    
+    Args:
+        label_encoder: label encoder object (for example, from sklearn).
+        file path (str): Path where the file will be saved.
+
+    """
+    with open(filepath, 'wb') as f:
+        pickle.dump(label_encoder, f, protocol=pickle.HIGHEST_PROTOCOL)
